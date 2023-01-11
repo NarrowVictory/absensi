@@ -1,0 +1,134 @@
+a {
+  text-decoration: none;
+}
+
+.alert{
+  background: #C80000;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border:0px solid #b32929;
+  font-family: Segoe UI Light;
+}
+
+header{
+  height: 30px;
+}
+
+body {
+  background-image: none;
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label {
+  font-family: "Raleway", sans-serif;
+  font-size: 11pt;
+}
+
+.codrops-top{
+  line-height: 24px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  box-shadow: 1px 0px 2px rgba(0,0,0,0.2);
+}
+
+.codrops-top a{
+  padding: 0px 10px;
+  letter-spacing: 1px;
+  color: #333;
+  text-shadow: 0px 1px 1px #fff;
+  float: left;
+  margin: 0 0 0 0;
+}
+
+.codrops-top a:hover{
+  background: #fff;
+}
+
+.codrops-top span.right{
+  float: right;
+  display: block;
+}
+
+#card {
+  background: #fbfbfb;
+  border-radius: 10px;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+  height: 520px;
+  margin: 0rem auto 0rem auto;
+  width: 329px;
+}
+
+#card-content {
+  padding: 12px 44px;
+}
+
+#card-title {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+}
+
+#card-title img{
+  width: 110px;
+  height: 160px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#signup {
+  color: #2dbd6e;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  margin-top: 16px;
+  text-align: center;
+}
+
+#submit-btn {
+  background: -webkit-linear-gradient(right, #a6f77b, #2dbd6e);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0px 1px 8px #24c64f;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway SemiBold", sans-serif;
+  height: 42.3px;
+  margin: 0 auto;
+  margin-top: 50px;
+  transition: 0.25s;
+  width: 100%;
+}
+
+#submit-btn:hover {
+  box-shadow: 0px 1px 10px #24c64f;
+  background: #008000;
+}
+
+.form {
+  align-items: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-border {
+  background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+  height: 1px;
+  width: 100%;
+}
+
+.form-content {
+  background: #fbfbfb;
+  border: none;
+  outline: none;
+  padding-top: 14px;
+}

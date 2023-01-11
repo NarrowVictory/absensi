@@ -1,0 +1,242 @@
+<?php
+  
+  session_start();
+  include "koneksi.php";
+ 
+  $admin_name = $_SESSION["user_name"];
+  $admin_foto = $_SESSION["user_foto"];
+  $query="select * from sekolah";
+  $res=mysqli_query($link, $query);
+  while($data=mysqli_fetch_array($res)){
+    $nama_sekolah=$data['nama_sekolah'];
+    $alamat = $data['alamat'];
+    $deskripsi=$data[3];
+  }
+  
+  $jumlah_guru=mysqli_num_rows(mysqli_query($link, "select * from guru where status='Guru'"));
+  $jumlah_kelas=mysqli_num_rows(mysqli_query($link, "select * from kelas"));
+  $jumlah_siswa=mysqli_num_rows(mysqli_query($link, "select * from siswa"));
+  
+  
+?>
+
+<?php
+  
+  include "koneksi.php";
+  /*
+  if(isset($_session['id'])){
+    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';  
+  }*/ 
+  
+  $admin_name = $_SESSION["user_name"];
+  $admin_foto = $_SESSION["user_foto"];
+  $nip=$_GET["id"];
+  
+  $sql="select * from guru where id_guru='$nip'";
+  $query=mysqli_query($link, $sql);
+    
+  while ($data=mysqli_fetch_array($query)){
+    $nip=$data["id_guru"];
+    $nama=$data["nama_guru"];
+    $jk=$data["jk"];
+    $email=$data["email"];
+    $username=$data["username"];
+    $password=$data["password"];
+    $no_telp=$data["no_telp"];
+    $foto_profil=$data["foto_profil"];
+    $tgl=$data["tgl_lahir"];
+  }
+
+  ?>         
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>W3.CSS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/input.css">
+  <style type="text/css">
+
+.stat {
+  line-height: 50px;
+  width: 220px;
+  color: #fff;
+  height: 250px;
+  background-color: #005E6E;
+  padding-left: 50px;
+  font-family: 'Roboto';
+  border-radius: 5px;
+  display: inline-block;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.kotak1 {
+  padding-left: 30px;
+}
+
+.w3-sidebar{
+  
+}
+
+h4{
+  font-size: 20px;
+}
+
+.header {
+  padding: 30px;
+  text-align: center;
+  background: rgb(0,148,134);
+  color: white;
+  font-size: 20px;
+  width: 100%;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none;" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <img style="vertical-align: center; display: block; margin-left: auto; margin-right: auto; width: 50%; border-radius: 50%; width: 75px; height: 75px;" src="images/guru/<?php echo $admin_foto; ?>" class="demo-avatar">
+  <p style="text-align: center;"><span style=""><?php echo $admin_name ;?></span></p>
+  <br><br>
+  <a href="admin.php" class="w3-bar-item w3-button" style="padding-left: 30px"><i class="fa fa-user"></i>&nbsp; &nbsp; &nbsp;&nbsp;Home</a>
+
+      <div class="w3-dropdown-hover">
+        <button class="w3-button" style="padding-left: 30px"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp; &nbsp;&nbsp;&nbsp;Tambah Data
+            <i class="fa fa-caret-down"></i>
+        </button>
+
+        <div class="w3-dropdown-content w3-bar-block">
+          <a href="tambah_dosen.php" class="w3-bar-item w3-button">Data Dosen</a>
+          <a href="tambah_mahasiswa.php" class="w3-bar-item w3-button">Data Mahasiswa</a>
+          <a href="tambah_pengawas.php" class="w3-bar-item w3-button">Data Pengawas</a>
+          <a href="tambah_kelas.php" class="w3-bar-item w3-button">Data Kelas</a>
+        </div>
+      </div>
+
+      <div class="w3-dropdown-hover">
+        <button class="w3-button" style="padding-left: 30px"><i class="fa fa-search" aria-hidden="true"></i>&nbsp; &nbsp;&nbsp;&nbsp;Lihat Data
+            <i class="fa fa-caret-down"></i>
+        </button>
+
+        <div class="w3-dropdown-content w3-bar-block">
+          <a href="dataDosen.php" class="w3-bar-item w3-button">Data Dosen</a>
+          <a href="lihat_murid.php" class="w3-bar-item w3-button">Data Mahasiswa</a>
+          <a href="#" class="w3-bar-item w3-button">Data Pengawas</a>
+          <a href="#" class="w3-bar-item w3-button">Data Kelas</a>
+        </div>
+      </div>
+
+        <a href="setting.php" class="w3-bar-item w3-button" style="padding-left: 30px"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp; &nbsp;&nbsp;&nbsp;Setting</a>
+
+        <a href="#" class="w3-bar-item w3-button" style="padding-left: 30px"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; &nbsp;&nbsp;&nbsp;Logout</a>
+
+</div>
+
+<div id="main">
+
+<div class="w3-teal" style="">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container">
+        <h1 style="text-align: center">Politeknik Negeri Lhokseumawe</h1>
+  </div>
+</div>
+
+
+<div class="w3-container">
+  <br>
+ <h4 style="margin-left: 35px"> Form Data Dosen </h4>
+                <form action="proses/proses edit guru.php" method="post" enctype="multipart/form-data"> 
+                <table border="0" width="75%" style="margin-left: 20px; margin-bottom: 200px; border-spacing: 15px 10px;">             
+                <tr>
+                    <td><label for="nip">ID</label></td>
+                    <td><input type="text" pattern="[P0-9]*" id="nip" name="nip" placeholder="" value="<?php echo $nip ?>" readonly/></td>
+                </tr>
+
+                <tr>
+                    <td><label for="namadepan">Nama Lengkap</label></td>
+                    <td><input type="text" pattern="[A-Za-z]*" id="namalengkap" name="namalengkap" placeholder="Format : A-Z" value="<?php echo $nama; ?>" /></td>
+                </tr>
+                
+                <tr>
+                <td>Jenis Kelamin : </td>
+                <td><label for="option-1">
+                    <input type="radio" name="jk" value="Pria" id="option-1" checked="" />
+                    <span class=""> Pria </span>
+                </label>
+
+                <label for="option-2">
+                    <input type="radio" name="jk" value="Wanita" id="option-2" />
+                    <span class=""> Wanita</span>
+                </label> </td>
+                </tr>
+
+                 <tr>
+                    <td><label >Tanggal Lahir</label></td>
+                    <td><input type="date" id="tanggallahir" name="tanggallahir" value="<?php echo $tgl; ?>"/> </td>
+                </tr>
+
+                <tr>
+              
+                    <td><label for="email" >Email</label></td>
+                    <td><input type="email" id="email" name="email" value="<?php echo $email; ?>" /></td>
+               
+                </tr>
+
+                <tr>
+                    <td><label for="username" class="">Username</label></td>
+                    <td><input type="text" id="username" name="username" value="<?php echo $username; ?>" /></td>
+                </tr>
+
+                <tr>
+                <div class="">
+                    <td><label for="password" >Password</label></td>
+                    <td><input type="password"  id="password" name="password" disabled="" value="<?php echo $password; ?>"/></td>
+                </div>
+                </tr>
+                
+                <tr>
+                    <td><label for="telepon">No Telp</label></td>
+                    <td><input type="text" pattern="[0-9]*" class="" id="telepon" name="telepon" value="<?php echo $no_telp; ?>"/></td>
+                </tr>
+
+                <tr>
+                    <td><label >Masukan Foto (JPG atau PNG)</label></td>
+                    <td><input type="file" name="file" id="file"></td>
+                </tr>
+                <br>                
+               
+                <tr>
+                <td><button type="submit">Edit Dosen</button></td> 
+                </tr>
+                 </table> 
+            </form>
+
+              
+      </div>
+</div>
+
+<br>
+
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
+</body>
+</html>
